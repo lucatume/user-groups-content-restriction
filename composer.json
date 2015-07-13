@@ -1,0 +1,17 @@
+{
+    "name": "lucatume/user-groups-content-restriction",
+    "description": "An extension of theAverageDev Restricted Content plugin to restrict content on a user group base.",
+    "type": "wordpress-plugin",
+    "require-dev": {
+        "lucatume/wp-browser": "dev-master"
+    },
+    "license": "GPL 2.0",
+    "authors": [
+        {
+            "name": "Luca Tumedei",
+            "email": "luca@theaveragedev.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
