@@ -3,7 +3,8 @@
     "description": "An extension of theAverageDev Restricted Content plugin to restrict content on a user group base.",
     "type": "wordpress-plugin",
     "require-dev": {
-        "lucatume/wp-browser": "dev-master"
+        "lucatume/wp-browser": "dev-master",
+        "lucatume/function-mocker": "dev-master"
     },
     "license": "GPL 2.0",
     "authors": [
