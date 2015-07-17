@@ -31,6 +31,18 @@ class ugcr_User implements trc_Public_UserSlugProviderInterface {
 	 * @return string[] An array of term slugs the user can access for the taxonomy.
 	 */
 	public function get_user_slugs() {
-		// TODO: Implement get_user_slugs() method.
+		$slugs = array( 'visitor' );
+		if ( is_user_logged_in() ) {
+			$slugs[] = 'logged-in';
+			$_slugs  = wp_get_object_terms( get_current_user_id(), $this->taxonomy_name );
+			$_slugs  = wp_list_pluck( $_slugs, 'slug' );
+			$slugs   = empty( $_slugs ) ? $slugs : array_merge( $slugs, $_slugs );
+		}
+
+		return $slugs;
+	}
+
+	public function set_taxonomy_name( $taxonomy_name ) {
+		$this->taxonomy_name = $taxonomy_name;
 	}
 }

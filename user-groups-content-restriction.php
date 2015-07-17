@@ -1,4 +1,5 @@
 <?php
+
 /*
 Plugin Name: User Groups Content Restriction
 Version: 0.1-alpha
@@ -10,20 +11,30 @@ Text Domain: ugcr
 Domain Path: /languages
 */
 
-function ugcr_autoload( $class ) {
-	if ( strpos( $class, 'ugcr_' ) === 0 ) {
-		require 'src/' . str_replace( 'ugcr_', '', $class ) . '.php';
-	}
+function _ugcr_autoload($class)
+{
+    if (strpos($class, 'ugcr_') === 0) {
+        require 'src/' . str_replace('ugcr_', '', $class) . '.php';
+    }
 }
 
-spl_autoload_register( 'ugcr_autoload' );
+spl_autoload_register('_ugcr_autoload');
 
-function ugcr_load() {
-	if ( ! ( class_exists( 'trc_Core_Plugin' ) && class_exists( 'CMB2' ) ) ) {
-		return;
-	}
-	ugcr_Plugin::instance()
-	           ->hooks();
+function ugcr_load()
+{
+    if (!(class_exists('trc_Core_Plugin') && class_exists('CMB2'))) {
+        return;
+    }
+    ugcr_Plugin::instance()->hooks();
 }
 
-add_action( 'plugins_loaded', 'ugcr_load' );
+add_action('plugins_loaded', 'ugcr_load');
+
+register_activation_hook(__FILE__, array(
+    'ugcr_Plugin',
+    'activate'
+));
+register_deactivation_hook(__FILE__, array(
+    'ugcr_Plugin',
+    'deactivate'
+));
