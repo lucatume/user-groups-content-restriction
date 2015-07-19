@@ -13,6 +13,11 @@ class ugcr_Plugin {
 	 */
 	public static $taxonomy_name = 'user-group';
 
+	/**
+	 * @var string The name of the the parallel taxonomy the plugin uses to relate posts to user groups.
+	 */
+	public static $post_taxonomy_name = 'post-user-group';
+
 	public static function instance() {
 		if ( empty( self::$instance ) ) {
 			self::$instance = new self;
@@ -22,11 +27,11 @@ class ugcr_Plugin {
 	}
 
 	public static function activate() {
+		ugcr_TermManager::instance()->remove_terms();
 		ugcr_TermManager::instance()->insert_terms();
 	}
 
 	public static function deactivate() {
-		ugcr_TermManager::instance()->remove_terms();
 	}
 
 	public function hooks() {
@@ -39,6 +44,9 @@ class ugcr_Plugin {
 
 		add_action( 'cmb2_init', array( ugcr_TermMetabox::instance(), 'add_metabox' ) );
 
+		add_action( 'create_' . self::$taxonomy_name, array( ugcr_TermManager::instance(), 'create_term' ), 10, 2 );
+		add_action( 'delete_' . self::$taxonomy_name, array( ugcr_TermManager::instance(), 'delete_term', 10, 3 ) );
+
 		return $this;
 	}
 
@@ -48,7 +56,7 @@ class ugcr_Plugin {
 	}
 
 	public function register_taxonomy() {
-		register_taxonomy( $this->taxonomy_name, $this->get_restricted_post_types(), array( 'show_ui' => false ) );
+		register_taxonomy( $this->post_taxonomy_name, $this->get_restricted_post_types(), array( 'show_ui' => false ) );
 	}
 
 	public function get_restricted_post_types() {
