@@ -11,10 +11,9 @@ class ugcr_TermMetabox {
 		$prefix = '_ugcr_';
 
 		$tax_box = new_cmb2_box( array(
-			'id'           => $prefix . 'user_group_taxonomy',
+			'id'           => $prefix . 'post_user_group_taxonomy',
 			'title'        => __( 'User Group Content Restriction', 'ugcr' ),
-			'object_types' => ugcr_Plugin::instance()
-			                             ->get_restricted_post_types(),
+			'object_types' => ugcr_Plugin::instance()->get_restricted_post_types(),
 			'context'      => 'side',
 			'priority'     => 'high',
 			'show_names'   => true,
@@ -24,10 +23,8 @@ class ugcr_TermMetabox {
 			'name'     => __( 'User Groups', 'ugcr' ),
 			'desc'     => __( 'Select the user groups that will be able to access the content', 'ugcr' ),
 			'id'       => $prefix . 'taxonomy_terms',
-			'taxonomy' => ugcr_Plugin::instance()->taxonomy_name,
-			'type'     => 'taxonomy_multicheck',
-			'default'  => ugcr_Terms::instance()
-			                              ->get_default_role_slug()
+			'taxonomy' => ugcr_Plugin::$post_taxonomy_name,
+			'type'     => 'taxonomy_multicheck'
 		) );
 	}
 }

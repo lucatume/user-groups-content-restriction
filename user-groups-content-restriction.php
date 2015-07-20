@@ -20,7 +20,7 @@ function _ugcr_autoload( $class ) {
 spl_autoload_register( '_ugcr_autoload' );
 
 function ugcr_load() {
-	if ( ! ( class_exists( 'trc_Core_Plugin' ) && class_exists( 'CMB2' ) ) ) {
+	if ( ! ( class_exists( 'trc_Core_Plugin' ) ) ) {
 		return;
 	}
 	ugcr_Plugin::instance()->hooks();

@@ -8,6 +8,6 @@ class ugcr_Terms {
 	}
 
 	public function get_default_role_slug() {
-		// TODO: Implement get_default_role_slug() method.
+		return apply_filters( 'ugcr_default_role_slug', 'visitor' );
 	}
 }

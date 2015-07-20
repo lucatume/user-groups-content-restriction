@@ -20,6 +20,7 @@ class ugcr_TermManager {
 	}
 
 	public function insert_terms() {
+		register_taxonomy( ugcr_Plugin::$post_taxonomy_name, null );
 		$terms = $this->get_additional_terms();
 
 		foreach ( $terms as $name => $args ) {

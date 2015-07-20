@@ -56,7 +56,7 @@ class ugcr_Plugin {
 	}
 
 	public function register_taxonomy() {
-		register_taxonomy( $this->post_taxonomy_name, $this->get_restricted_post_types(), array( 'show_ui' => false ) );
+		register_taxonomy( self::$post_taxonomy_name, $this->get_restricted_post_types(), array( 'show_ui' => false ) );
 	}
 
 	public function get_restricted_post_types() {
