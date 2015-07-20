@@ -54,10 +54,10 @@ class ugcr_TermManager {
 	 */
 	public function get_additional_terms() {
 		return array(
-			__( 'Logged-in', 'ugcr' ) => array(
+			__( 'Logged-in users', 'ugcr' ) => array(
 				'slug' => 'logged-in'
 			),
-			__( 'Visitor', 'ugcr' )   => array(
+			__( 'Visitors', 'ugcr' )   => array(
 				'slug' => 'visitor'
 			)
 		);

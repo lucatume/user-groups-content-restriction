@@ -39,8 +39,8 @@ class ugcr_Plugin {
 		add_action( 'init', array( $this, 'register_taxonomy' ) );
 
 		trc_Core_Plugin::instance()->post_types->add_restricted_post_type( $this->get_restricted_post_types() );
-		trc_Core_Plugin::instance()->user->add_user_slug_provider( $this->taxonomy_name, ugcr_User::instance( $this->taxonomy_name ) );
-		trc_Core_Plugin::instance()->taxonomies->add( $this->taxonomy_name );
+		trc_Core_Plugin::instance()->user->add_user_slug_provider( self::$post_taxonomy_name, ugcr_User::instance( self::$post_taxonomy_name ) );
+		trc_Core_Plugin::instance()->taxonomies->add( self::$post_taxonomy_name );
 
 		add_action( 'cmb2_init', array( ugcr_TermMetabox::instance(), 'add_metabox' ) );
 
