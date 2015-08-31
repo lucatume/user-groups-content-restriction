@@ -57,7 +57,7 @@ class ugcr_Plugin {
 
 	public function localization_init() {
 		$path = $this->root_dir . '/languages/';
-		load_plugin_textdomain( 'urcr', false, $path );
+		load_plugin_textdomain( 'ugcr', false, $path );
 	}
 
 	public function register_taxonomy() {
