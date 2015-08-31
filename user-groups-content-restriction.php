@@ -24,7 +24,8 @@ function ugcr_load() {
 		return;
 	}
 
-	ugcr_Plugin::instance()->root_dir = dirname( __FILE__ );
+	ugcr_Plugin::instance()->root_file = __FILE__;
+	ugcr_Plugin::instance()->root_dir  = dirname( __FILE__ );
 	ugcr_Plugin::instance()->hooks();
 }
 

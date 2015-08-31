@@ -23,6 +23,11 @@ class ugcr_Plugin {
 	 */
 	public $root_dir;
 
+	/**
+	 * @var The absolute path to the plugin root file.
+	 */
+	public $root_file;
+
 	public static function instance() {
 		if ( empty( self::$instance ) ) {
 			self::$instance = new self;
@@ -56,8 +61,7 @@ class ugcr_Plugin {
 	}
 
 	public function localization_init() {
-		$path = $this->root_dir . '/languages/';
-		load_plugin_textdomain( 'ugcr', false, $path );
+		load_plugin_textdomain( 'ugcr', false, dirname( plugin_basename( $this->root_file ) ) . '/languages' );
 	}
 
 	public function register_taxonomy() {
