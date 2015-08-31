@@ -23,6 +23,8 @@ function ugcr_load() {
 	if ( ! ( class_exists( 'trc_Core_Plugin' ) ) ) {
 		return;
 	}
+
+	ugcr_Plugin::instance()->root_dir = dirname( __FILE__ );
 	ugcr_Plugin::instance()->hooks();
 }
 

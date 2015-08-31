@@ -45,4 +45,13 @@ class ugcr_User implements trc_Public_UserSlugProviderInterface {
 	public function set_taxonomy_name( $taxonomy_name ) {
 		$this->taxonomy_name = $taxonomy_name;
 	}
+
+	/**
+	 * @param WP_Post|string $post The post object that is being updated or a post type.
+	 *
+	 * @return array An array of default term slugs that should be applied to each new post.
+	 */
+	public function get_default_post_terms( $post = null ) {
+		return array( ugcr_Terms::instance()->get_default_role_slug() );
+	}
 }

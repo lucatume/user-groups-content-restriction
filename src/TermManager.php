@@ -27,18 +27,20 @@ class ugcr_TermManager {
 			if ( get_term_by( 'slug', $args['slug'], ugcr_Plugin::$post_taxonomy_name ) ) {
 				continue;
 			}
-			wp_insert_term( $name, ugcr_Plugin::$post_taxonomy_name, $args );
+			$group_suffix = apply_filters( 'ugcr_group_suffix', __( 'group', 'ugcr' ) );
+			wp_insert_term( $name . ' ' . $group_suffix, ugcr_Plugin::$post_taxonomy_name, $args );
 		}
 	}
 
 	public function create_term( $term_id, $tt_id ) {
 		$term = get_term( $term_id, ugcr_Plugin::$taxonomy_name );
 
-		$args = array(
+		$args         = array(
 			'slug'        => $term->slug,
 			'description' => $term->description
 		);
-		$exit = wp_insert_term( $term->name . ' ' . __( 'group', 'ugcr' ), ugcr_Plugin::$post_taxonomy_name, $args );
+		$group_suffix = apply_filters( 'ugcr_group_suffix', __( 'group', 'ugcr' ) );
+		$exit         = wp_insert_term( $term->name . ' ' . $group_suffix, ugcr_Plugin::$post_taxonomy_name, $args );
 	}
 
 	public function delete_term( $term_id, $tt_id, $deleted_term ) {
@@ -57,7 +59,7 @@ class ugcr_TermManager {
 			__( 'Logged-in users', 'ugcr' ) => array(
 				'slug' => 'logged-in'
 			),
-			__( 'Visitors', 'ugcr' )   => array(
+			__( 'Visitors', 'ugcr' )        => array(
 				'slug' => 'visitor'
 			)
 		);

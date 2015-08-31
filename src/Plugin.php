@@ -18,6 +18,11 @@ class ugcr_Plugin {
 	 */
 	public static $post_taxonomy_name = 'post-user-group';
 
+	/**
+	 * @var string The absolute path to the plugin root folder.
+	 */
+	public $root_dir;
+
 	public static function instance() {
 		if ( empty( self::$instance ) ) {
 			self::$instance = new self;
