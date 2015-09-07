@@ -1,5 +1,4 @@
 <?php
-
 /*
 Plugin Name: User Groups Content Restriction
 Version: 0.1-alpha
