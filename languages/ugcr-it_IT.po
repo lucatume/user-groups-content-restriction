@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: User Groups Content Restriction\n"
-"POT-Creation-Date: 2015-08-31 17:46+0200\n"
-"PO-Revision-Date: 2015-08-31 17:48+0200\n"
+"POT-Creation-Date: 2015-09-07 11:28+0200\n"
+"PO-Revision-Date: 2015-09-07 11:29+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: it\n"
+"Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,18 +19,16 @@ msgstr ""
 "_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
-"X-Poedit-SearchPathExcluded-1: tests\n"
-"X-Poedit-SearchPathExcluded-2: vendor\n"
 
-#: src/TermManager.php:30 src/TermManager.php:42
-msgid "group"
-msgstr "gruppo"
+#: src/TermManager.php:32 src/TermManager.php:45
+msgid "  "
+msgstr ""
 
-#: src/TermManager.php:59
+#: src/TermManager.php:64
 msgid "Logged-in users"
 msgstr "Utenti registrati"
 
-#: src/TermManager.php:62
+#: src/TermManager.php:68
 msgid "Visitors"
 msgstr "Visitatori"
 
@@ -46,6 +44,11 @@ msgstr "Gruppi di utenti"
 msgid "Select the user groups that will be able to access the content"
 msgstr ""
 "Selezionare i gruppi di utenti che saranno in grado di accedere al contenuto"
+
+#: tests/functional/ugcr_TermManagerTest.php:114
+#: tests/functional/ugcr_TermManagerTest.php:125
+msgid "group"
+msgstr "gruppo"
 
 #. Plugin Name of the plugin/theme
 msgid "User Groups Content Restriction"
