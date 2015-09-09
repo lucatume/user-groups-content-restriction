@@ -22,10 +22,13 @@ class ugcr_TermManager {
 	public function insert_terms() {
 		// In need of translated strings now...
 		global $l10n;
-		$l10n = array();
+		$l10n = is_array( $l10n ) ? $l10n : array();
 		load_textdomain( 'ugcr', dirname( dirname( __FILE__ ) ) . '/languages/ugcr-' . get_locale() . '.mo' );
 
+		// Register taxonomies to avoid errors
+		register_taxonomy( ugcr_Plugin::$taxonomy_name, null );
 		register_taxonomy( ugcr_Plugin::$post_taxonomy_name, null );
+
 		$terms          = $this->get_additional_terms();
 		$existing_terms = get_terms( ugcr_Plugin::$taxonomy_name, array( 'hide_empty' => false ) );
 		$terms          = array_merge( $terms, $existing_terms );
@@ -37,7 +40,6 @@ class ugcr_TermManager {
 			$group_suffix = apply_filters( 'ugcr_group_suffix', __( '  ', 'ugcr' ) );
 			wp_insert_term( $term['name'] . ' ' . $group_suffix, ugcr_Plugin::$post_taxonomy_name, $term );
 		}
-
 	}
 
 	public function create_term( $term_id, $tt_id ) {
